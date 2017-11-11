@@ -169,7 +169,8 @@ class DatabaseHandler extends BaseHandler implements \SessionHandlerInterface
 			$builder = $builder->where('ip_address', $_SERVER['REMOTE_ADDR']);
 		}
 
-		if ($result = $builder->get()->getRow() === null)
+		$result = $builder->get()->getRow();
+        	if ($result === null)
 		{
 			// PHP7 will reuse the same SessionHandler object after
 			// ID regeneration, so we need to explicitly set this to
